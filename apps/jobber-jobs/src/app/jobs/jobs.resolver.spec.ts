@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { JobsResolver } from './jobs.resolver';
 import { JobsService } from './jobs.service';
+import { AUTH_PACKAGE_NAME } from 'types/proto/auth';
 
 describe('JobsResolver', () => {
   let resolver: JobsResolver;
@@ -11,6 +12,10 @@ describe('JobsResolver', () => {
         JobsResolver,
         {
           provide: JobsService,
+          useValue: {},
+        },
+        {
+          provide: `${AUTH_PACKAGE_NAME}`,
           useValue: {},
         },
       ],
